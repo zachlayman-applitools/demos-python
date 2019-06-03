@@ -1,7 +1,7 @@
 import os
 
 from selenium import webdriver
-from applitools.eyes import Eyes
+from applitools.selenium.eyes import Eyes
 from applitools.common import BatchInfo
 
 class HelloWorld:
