@@ -2,7 +2,9 @@ import os
 
 from selenium import webdriver
 from applitools.selenium.eyes import Eyes
-from applitools.common import BatchInfo
+from applitools.selenium.eyes import Target
+from applitools.selenium import Region
+from applitools.selenium import BatchInfo
 
 class HelloWorld:
 
@@ -20,16 +22,12 @@ class HelloWorld:
         eyes.open(driver=driver, app_name='pythonAPP', test_name='pythonTEST',
                   viewport_size={'width': 1000, 'height': 800})
 
-        b = BatchInfo(id="pythonID", name="pythonNAME")
-        b.id = "pythonID"
-
-        eyes.batch = b
-
         # Navigate the browser to the "hello world!" web-site.
         driver.get('https://applitools.com/helloworld?diff1')
 
         # Visual checkpoint #1.
         eyes.check_window('Hello!')
+        eyes.check("my check", Target.window().layout_regions(Region(100, 90, 110, 91)))
 
         # End the test.
         eyes.close()
