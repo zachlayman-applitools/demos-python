@@ -5,6 +5,7 @@ from applitools.selenium.eyes import Eyes
 from applitools.selenium.eyes import Target
 from applitools.selenium import Region
 from applitools.selenium import BatchInfo
+from selenium.webdriver.common.by import By
 
 class HelloWorld:
 
@@ -24,7 +25,8 @@ class HelloWorld:
         chrome_options.add_experimental_option("prefs", prefs)
         caps = chrome_options.to_capabilities()
 
-        driver = webdriver.Chrome(desired_capabilities=caps)
+        # driver = webdriver.Chrome(desired_capabilities=caps)
+        driver = webdriver.Chrome()
         
         # Start the test and set the browser's viewport size to 800x600.
         eyes.open(driver=driver, app_name='pythonAPP', test_name='pythonTEST',
@@ -35,7 +37,7 @@ class HelloWorld:
 
         # Visual checkpoint #1.
         eyes.check_window('Hello!')
-        eyes.check("my check", Target.window().layout_regions(Region(100, 90, 110, 91)))
+        eyes.check("my check", Target.window().layout_regions((By.CLASS_NAME, "myClass")))
 
         # End the test.
         eyes.close()
