@@ -38,7 +38,7 @@ class HelloWorld:
         # Visual checkpoint #1.
         eyes.check_window('Hello!')
         eyes.check("my check", Target.window().layout_regions((By.CLASS_NAME, "myClass")))
-
+        eyes.check("number 2", (By.TAG_NAME, "body"))
         # End the test.
         eyes.close()
 
