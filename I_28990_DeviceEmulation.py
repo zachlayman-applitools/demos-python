@@ -3,7 +3,7 @@ import os
 from selenium import webdriver
 from applitools.selenium.eyes import Eyes
 from applitools.selenium.eyes import Target
-from applitools.selenium import Region
+from applitools.common import Region
 from applitools.selenium import BatchInfo
 from selenium.webdriver.common.by import By
 
@@ -37,8 +37,9 @@ class HelloWorld:
 
         # Visual checkpoint #1.
         eyes.check_window('Hello!')
-        eyes.check("my check", Target.window().layout_regions((By.CLASS_NAME, "myClass")))
-        eyes.check("number 2", (By.TAG_NAME, "body"))
+        # eyes.check("my check", Target.window().ignore("/html/body/div/div[2]/p[4]/span[2]"))
+        eyes.check("ignore random number", Target.window().ignore((By.CLASS_NAME, "random-number")).layout_regions((By.CLASS_NAME, "button-section")))
+        # eyes.check("number 2", (By.TAG_NAME, "body"))
         # End the test.
         eyes.close()
 

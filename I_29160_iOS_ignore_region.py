@@ -2,6 +2,7 @@ import os
 from selenium import webdriver
 from applitools.selenium.eyes import Eyes
 from applitools.selenium.eyes import Target
+from selenium.webdriver.common.by import By
 
 class HelloWorld:
 
@@ -23,15 +24,17 @@ class HelloWorld:
     try:
 
         # Start the test.
-        eyes.open(driver=driver, app_name='pythonAPP',
-                  test_name='My first Appium web Python test!')
+        eyes.open(driver=driver, app_name='Zachs pythonAPP',
+                  test_name='python 4.0.5 ignore region misplacement')
 
         # Navigate the browser to the "Hello World!" web-site.
         driver.get('https://applitools.com/helloworld?diff1')
 
         # Visual validation point #1.
-        eyes.check_window('Hello!')
-        eyes.check("winning", Target.window())
+        # eyes.check_window('Hello!')
+        # eyes.check("winning", Target.window())
+
+        eyes.check("ignore random number", Target.window().ignore((By.CLASS_NAME, "random-number")))
 
         # Click the "Click me!" button.
         # driver.find_element_by_tag_name('button').click()
